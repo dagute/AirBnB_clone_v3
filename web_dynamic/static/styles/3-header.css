@@ -1,11 +1,22 @@
 header {
-    background: white;
+    background-color: white;
+    background-image:  url("../images/logo.png");
+    background-repeat: no-repeat;
     height: 70px;
     width: 100%;
     border-bottom: 1px solid #CCCCCC;
+    display: flex;
+    justify-content: flex-start;
 }
-header .logo {
-    background: url("../images/logo.png") no-repeat;
-    left: 20px;
-    height: 100%;
+
+#api_status {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    align-self: center;
+    margin: auto 30px auto auto;
+}
+
+.available {
+    background-color: #ff545f;
 }
