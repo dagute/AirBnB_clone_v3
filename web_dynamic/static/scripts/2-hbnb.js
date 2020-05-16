@@ -1,12 +1,12 @@
 $(document).ready(function () {
-  let amenities = {};
+  const amenities = {};
   $('input:checkbox').change(function () {
-    if ( $(this).is(':checked') ) {
+    if ($(this).is(':checked')) {
       amenities[$(this).data('id')] = $(this).data('name');
     } else {
       delete amenities[$(this).data('id')];
     }
-    let tex = "";
+    let tex = '';
     if (!(Object.values(amenities).length)) {
       $('.amenities h4').replaceWith('<h4>&nbsp;</h4>');
     } else {
@@ -15,10 +15,10 @@ $(document).ready(function () {
     }
   });
 
-  let status = () => {
+  const status = () => {
     $.ajax({
-      type: "GET",
-      url: "http://0.0.0.0:5001/api/v1/status/",
+      type: 'GET',
+      url: 'http://0.0.0.0:5001/api/v1/status/',
       success: (response) => {
         $('DIV#api_status').addClass('available');
       }
@@ -26,6 +26,6 @@ $(document).ready(function () {
       $('DIV#api_status').removeClass('available');
       $('DIV#api_status').css('background-color', '#CCCCCC');
     });
-  }
+  };
   status();
 });
