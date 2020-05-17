@@ -32,45 +32,43 @@ $(document).ready(function () {
   status();
 
   const search = () => {
-
     $.ajax({
-      type: "POST",
-      url: "http://0.0.0.0:5001/api/v1/places_search/",
+      type: 'POST',
+      url: 'http://0.0.0.0:5001/api/v1/places_search/',
       data: JSON.stringify(dat),
-      contentType: "application/json",
-      success:  (response) => {
+      contentType: 'application/json',
+      success: (response) => {
         response.forEach(place => {
           const item = `<article>
           <div class="title_box">
-            <h2>${ place.name }</h2>
-            <div class="price_by_night">${ place.price_by_night }</div>
+            <h2>${place.name}</h2>
+            <div class="price_by_night">${place.price_by_night}</div>
           </div>
           <div class="information">
-            <div class="max_guest">${ place.max_guest } Guest${place.max_guest != 1 ? 's': ''}</div>
-                  <div class="number_rooms">${ place.number_rooms } Bedroom${place.number_rooms != 1 ? 's': ''}</div>
-                  <div class="number_bathrooms">${ place.number_bathrooms } Bathroom${place.number_bathrooms != 1 ? 's': ''}</div>
+            <div class="max_guest">${place.max_guest} Guest${place.max_guest != 1 ? 's' : ''}</div>
+                  <div class="number_rooms">${place.number_rooms} Bedroom${place.number_rooms != 1 ? 's' : ''}</div>
+                  <div class="number_bathrooms">${place.number_bathrooms} Bathroom${place.number_bathrooms != 1 ? 's' : ''}</div>
           </div>
-        </article>`
-        $('section.places').append(item);
+        </article>`;
+          $('section.places').append(item);
         });
       }
     });
   };
   search();
 
-  $('button').click( () => { 
+  $('button').click(() => {
     if (!(Object.values(amenities).length)) {
       dat = {};
       console.log(dat);
       $('.places').empty();
       search();
     } else {
-      dat = {'amenities': Object.keys(amenities)};
+      dat = { amenities: Object.keys(amenities) };
       console.log(dat);
       console.log(typeof dat);
       $('.places').empty();
       search();
     }
   });
-
 });
